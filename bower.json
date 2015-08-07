@@ -1,0 +1,22 @@
+{
+  "name": "Time Table",
+  "description": "A project for viewing university courses built using AngularJS",
+  "version": "0.0.1",
+  "homepage": "https://timex.com",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "latest",
+    "angular": "^1.4.x",
+    "angular-material": "^0.9.0",
+    "angular-animate": "latest",
+    "angular-ui-router": "~0.2.x",
+    "angular-aria": "1.4.x",
+    "angular-loader": "1.4.x",
+    "angular-mocks": "~1.4.x",
+    "html5-boilerplate": "~4.3.0",
+    "momentjs": "~2.10.3",
+    "fullcalendar": "~2.3.2",
+    "angular-bootstrap": "~0.13.1"
+  }
+}
