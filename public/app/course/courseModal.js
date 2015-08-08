@@ -5,7 +5,7 @@ angular.module("courseview.courseModal", ['courseview.common.datepicker']).contr
     $scope.course.level = 400;
     $scope.save = function(){
         console.log($scope.course);
-        $modalInstance.close(course);
+        $modalInstance.close($scope.course);
     };
     
     $scope.cancel = function(){
