@@ -69,13 +69,20 @@ table td, th{
 }
 
 .panel{
+    border:  3px solid beige;
+    border-radius: 10px;
     padding: 10px 5px;
 }
 
 @media(min-width:1199px) {
     table td{
+        width: 150px;
         height: 100px;
         padding: 0 !important;
+    }
+    
+    table tr > td{
+        width: 100px;
     }
 }
 

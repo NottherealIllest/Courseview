@@ -9,13 +9,10 @@ var courseSchema = new mongoose.Schema({
     department  : String,
     code        : String,
     name        : String,
-    location    : String,
     level       : String,
     department  : String,
     note        : String,
     color       : String,
-    day         : String,
-    time        : String
 });
 
 // define our course model

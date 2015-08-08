@@ -16,7 +16,6 @@ angular.module("courseview.coursecell", [])
                 }
                 
                 $scope.open = function(){
-                    console.log($scope.course);
                     var $modalInstance = $modal.open(
                         {
                             animation: true,
@@ -29,6 +28,13 @@ angular.module("courseview.coursecell", [])
                             }
                         }
                     );
+                    
+                    $modalInstance.result.then(function(course){
+                        console.log("Save");
+                        $scope.course = course;
+                    }, function(){
+                        console.log("dismiss");
+                    });
                 }
             }
         }

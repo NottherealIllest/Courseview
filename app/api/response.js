@@ -73,6 +73,21 @@ var courses = [
     }
 ];
 
+var courseModel = {
+    "coursename": "Introduction To Database Management", 
+    "coursecode": "CSC301",
+    "color": "blue", 
+    "programme": "Computer Science",
+    "department": "Computer Science",
+    "college": "COLICT",
+    "university": "Bells University",
+    "time": [
+     {"coursetime": "7", "courseday": "Monday", "courselocation": "Room 1"}, 
+     {"coursetime": "8", "courseday": "Monday", "courselocation": "Room 1"},
+     {"coursetime": "12", "courseday": "Tuesday", "courselocation": "Edozien"}, 
+     {"coursetime": "17", "courseday": "Friday", "courselocation": "MPH"}]
+};
+
 /*{
     "name": "Bells University",
     "address": {
