@@ -3,7 +3,7 @@ logs/*
 node_modules/
 bower_components/
 public/components/
-npm-debug.log  
+npm-debug.log
 tmp
 .DS_Store
 .idea
