@@ -68,6 +68,10 @@ table td, th{
     
 }
 
+.panel{
+    padding: 10px 5px;
+}
+
 @media(min-width:1199px) {
     table td{
         height: 100px;

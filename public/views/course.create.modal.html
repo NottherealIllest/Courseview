@@ -4,21 +4,23 @@
 <div class="modal-body">
     <form class="form">
         <div class="form-group">
-            <label>Course Name  {{course.coursename}}{{course}}<span class="required"> *</span></label>
+            <label>Course Name<span class="required"> *</span></label>
             <input class="form-control" type="text" name="course_name" value="{{course.coursename}}">
         </div>
         <div class="form-group">
             <label>Course Code<span class="required"> *</span></label>
-            <input class="form-control" type="text" name="course_code">
-        </div>
-        <div class="form-group">
-            <label>Time<span class="required" style="padding-right:20px"> *</span></label>
-            <button class="btn-sm btn btn-success">Add Date</button>
-            <date-picker ng-repeat="time in course.time"></date-picker>
+            <input class="form-control" type="text" name="course_code" value="{{course.coursecode}}">
         </div>
         <div class="form-group">
             <label>Color<span class="required"> *</span></label>
             <input class="form-control" type="text" name="course_color" value="{{course.color}}">
+        </div>
+        <div class="panel">
+            <div class="form-group">
+                <label>Time<span class="required" style="padding-right:20px"> *</span></label>
+                <button class="btn-sm btn btn-success">Add Date</button>
+            </div>
+            <date-picker ng-repeat="time in course.time"></date-picker>
         </div>
         <div class="form-group">
             <label>Level</label>
