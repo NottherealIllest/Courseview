@@ -36,5 +36,9 @@ angular.module('appRoutes', [])
         .state('course.timetable', {
             url         : '',
             templateUrl : 'views/course.timetable.html'
+        })
+        .state('schools', {
+            url        : 'schools',
+            templateUrl : 'views/schools.html'
         });
     }]);

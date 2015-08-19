@@ -18,16 +18,15 @@ var Course = require('../models/course');
 
 //get all courses in mongodb
 router.get('/course', function(req, res, next) {
-    res.json(response);
     // use mongoose to get all courses in the database
-    /*Course.find(function(err, courses) {
+    Course.find(function(err, courses) {
 
         // if there is an error retrieving, send the error.
         if (err)
             res.send(err);
 
-        res.json(response); // return all courses in JSON format 
-    }); */
+        res.json(courses); // return all courses in JSON format 
+    });
 });
 
 // get a single course

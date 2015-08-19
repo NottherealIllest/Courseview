@@ -5,14 +5,15 @@ var university = require('./university');
 var department = require('./department');
 //var 
 var courseSchema = new mongoose.Schema({
+    coursecode        : String,
+    coursename        : String,
+    level       : String,
+    times       : [],
+    notes       : String,
+    color       : String,
     university  : String,
     department  : String,
-    code        : String,
-    name        : String,
-    level       : String,
-    department  : String,
-    note        : String,
-    color       : String,
+    programme  : String,
 });
 
 // define our course model

@@ -17,6 +17,7 @@
     "html5-boilerplate": "~4.3.0",
     "momentjs": "~2.10.3",
     "fullcalendar": "~2.3.2",
-    "angular-bootstrap": "~0.13.1"
+    "angular-bootstrap": "~0.13.1",
+    "animate.css": "~3.4.0"
   }
 }

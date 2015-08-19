@@ -74,7 +74,7 @@ var dayTimes = function(){
     this.Saturday = {};
 }
 
-var times2 = {
+var times = {
         7 : new dayTimes() ,
         8 : new dayTimes() ,
         9 : new dayTimes() , 
@@ -92,20 +92,23 @@ var times2 = {
 
 function course_loop(c){
     var index;
-    for(index = 0; index < c.time.length; index++){
-        times2[c.time[index].coursetime][c.time[index].courseday] = c;
+    for(index = 0; index < c.times.length; index++){
+        times[c.times[index].coursetime][c.times[index].courseday] = c;
     }
 }
 
-courses.forEach(course_loop);
-console.log(times2);
+//courses.forEach(course_loop);
+//console.log(times2);
    
 angular.module('courseview.timetable', ['courseview.courseModal'])
-    .controller('TimetableController', ['$scope', 'timetableServ', '$modal', function($scope, timetableserv, $modal){
+    .controller('TimetableController', ['$scope', 'courseService', '$modal', function($scope, courseService, $modal){
         $scope.start = 1;
         $scope.headers = headers;
-        $scope.courses = courses;
-        $scope.times = times2;
+        courseService.getCourses().success(function(courses){
+            courses.forEach(course_loop);
+            $scope.courses = courses;
+        });
+        $scope.times = times;
         $scope.title = 'Timetable Controller2';
         
         $scope.open = function(){

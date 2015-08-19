@@ -3,9 +3,10 @@ var mongoose = require('mongoose');
 var college = require('./college');
 
 var universitySchema = new mongoose.Schema({
-    name     : String,
-    college  : [college],
-    location : String
+    name      : String,
+    colleges  : [college],
+    location  : String,
+    description: String
 });
 
 // define our course model

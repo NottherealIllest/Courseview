@@ -1,16 +1,21 @@
-angular.module('CourseService', [])
-    .factory('Course', ['$http', function($http){
+angular.module('courseview.course')
+    .factory('courseService', ['$http', function($http){
+        var dbs = "http://localhost:3000/api";
         return {
-            get: function() {
-                return $http.get('/api/course');
+            getCourses: function() {
+                return $http.get(dbs + '/course');
             },
             
-            create: function(course) {
-                return $http.post('/api/course', course);
+            createCourse: function(course) {
+                return $http.post(dbs + '/course', course);
             },
             
-            delete: function(id) {
-                return $http.delete('/api/course/'+id);
+            updateCourse: function(id, course){
+                return $http.put(dbs + '/course/' + id, course);
+            },
+            
+            deleteCourse: function(id) {
+                return $http.delete('/course/'+id);
             }
         }
     }]);

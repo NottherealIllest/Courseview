@@ -1,5 +1,5 @@
 angular.module('courseview.timetable')
-    .factory('timetableServ', ['$http', function($http){
+    .factory('timetableService', ['$http', function($http){
         return {
             get: function() {
                 return $http.get('/api/course');
