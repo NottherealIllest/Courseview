@@ -16,6 +16,10 @@ angular.module('courseview.course')
             
             deleteCourse: function(id) {
                 return $http.delete('/course/'+id);
+            },
+            
+            updateTimetable: function(course){
+                return ;
             }
         }
     }]);

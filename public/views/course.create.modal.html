@@ -20,7 +20,7 @@
                 <label>Time<span class="required" style="padding-right:20px"> *</span></label>
                 <button class="btn-sm btn btn-success">Add Date</button>
             </div>
-            <date-picker ng-repeat="time in course.time"></date-picker>
+            <date-picker ng-repeat="time in course.times"></date-picker>
         </div>
         <div class="form-group">
             <label>Level</label>
@@ -28,7 +28,7 @@
         </div>
         <div class="form-group">
             <label>Programme</label>
-            <input class="form-control" disabled type="text" name="course_department" value="{{course.programme}}">
+            <input class="form-control" disabled type="text" name="course_programme" value="{{course.programme}}">
         </div>
         <div class="form-group">
             <label>Department</label>

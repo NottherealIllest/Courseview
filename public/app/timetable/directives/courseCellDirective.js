@@ -1,7 +1,7 @@
 "use strict"
 
 angular.module("courseview.coursecell", [])
-    .directive('courseCell', ['$modal', 'courseService', function($modal, courseService){
+    .directive('courseCell', ['$modal', 'courseService', 'notify', function($modal, courseService, notify){
         return {
             scope : {
                 course : '='
@@ -32,10 +32,10 @@ angular.module("courseview.coursecell", [])
                     $modalInstance.result.then(function(course){
                         courseService.updateCourse(course._id, course).
                             success(function(data){
-                                $scope.course = data;
+                                notify('Course Updated');
                             })
                             .error(function(error, status){
-                                
+                                notify("Error Update:"+error);
                             });
                         
                         //$scope.course = course;
