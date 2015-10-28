@@ -2,7 +2,7 @@ var express = require('express')
     , app = express()
     , body = require('body-parser')
     , methodOverride = require('method-override')
-    , port = 3000;
+    , port = (process.env.PORT || 5000);
 
 app.use(express.static(__dirname + '/public'))
 app.use(body.json())
