@@ -8,37 +8,43 @@ angular.module('appRoutes', [])
             url         : '',
             templateUrl : 'views/home.html'
         })
-        .state('timetable', {
-            url         : 'timetable',
-            templateUrl : 'views/timetable.html'
+		
+		//school states
+        .state('school', {
+			abstract 	: true,
+            url         : '/schools',
+            templateUrl : 'views/schools.html'
         })
+		.state('school.home', {
+			url 	    : '',
+			templateUrl : 'views/schools.home.html'
+		})
+		.state('school.college', {
+			url			: '/:schoolId/colleges',
+			templateUrl : 'views/school.colleges.html'
+		})
+		.state('school.department', {
+			url			: '/:collegeId/departments',
+			templateUrl : 'views/school.college.departments.html'
+		})
+		.state('school.programme', {
+			url			: '/:departmentId/programmes',
+			templateUrl : 'views/school.college.department.programmes.html'
+		})
+		
+		
+		//course states
         .state('course', {
             abstract    : true,
             url         : '/course',
             templateUrl : 'views/course.html'
         })
-        .state('course.create', {
-            url         : '/create',
-            templateUrl : 'views/course.create.html'
-        })
         .state('course.detail', {
             url         : '/:courseId',
             templateUrl : 'views/course.detail.html'
         })
-        .state('course.list', {
-            url         : '/list',
-            templateUrl : 'views/course.list.html'
-        })
-        .state('course.choose', {
-            url         : '/choose',
-            templateUrl : 'views/course.choose.html'
-        })
-        .state('course.timetable', {
-            url         : '',
+        .state('school.timetable', {
+            url         : '/:programmeId/courses/:level',
             templateUrl : 'views/course.timetable.html'
-        })
-        .state('schools', {
-            url        : 'schools',
-            templateUrl : 'views/schools.html'
         });
     }]);

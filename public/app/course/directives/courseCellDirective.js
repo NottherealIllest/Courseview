@@ -6,7 +6,7 @@ angular.module("courseview.coursecell", [])
             scope : {
                 course : '='
             },
-            templateUrl : 'app/timetable/directives/courseCell.html',
+            templateUrl : 'app/course/directives/courseCell.html',
             restrict : 'E',
             controller : function($scope, $element, $attrs){
                 $scope.isValidCourse = function(course){
@@ -20,7 +20,7 @@ angular.module("courseview.coursecell", [])
                         {
                             animation: true,
                             templateUrl: 'views/course.create.modal.html',
-                            controller: 'courseEditModalCtrl',
+                            controller: 'courseEditModalController',
                             resolve: {
                                 course: function(){
                                     return $scope.course;
@@ -40,7 +40,6 @@ angular.module("courseview.coursecell", [])
                         
                         //$scope.course = course;
                     }, function(){
-                        console.log("dismiss");
                     });
                 }
             }

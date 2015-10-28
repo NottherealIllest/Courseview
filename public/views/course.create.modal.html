@@ -13,12 +13,12 @@
         </div>
         <div class="form-group">
             <label>Color<span class="required"> *</span></label>
-            <input class="form-control" type="text" name="course_color" ng-model="course.color">
+            <input class="form-control" type="color" name="course_color" ng-model="course.color">
         </div>
         <div class="panel">
             <div class="form-group">
                 <label>Time<span class="required" style="padding-right:20px"> *</span></label>
-                <button class="btn-sm btn btn-success">Add Date</button>
+                <button class="btn-sm btn btn-success" ng-click="add_date()">Add Date</button>
             </div>
             <date-picker ng-repeat="time in course.times"></date-picker>
         </div>
@@ -26,6 +26,7 @@
             <label>Level</label>
             <input class="form-control" disabled type="text" name="course_level" value="{{course.level}}">
         </div>
+<!--
         <div class="form-group">
             <label>Programme</label>
             <input class="form-control" disabled type="text" name="course_programme" value="{{course.programme}}">
@@ -38,6 +39,7 @@
             <label>College</label>
             <input class="form-control" disabled type="text" name="course_college" value="{{course.college}}">
         </div>
+-->
     </form>
 </div>
 <div class="modal-footer">

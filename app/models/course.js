@@ -11,9 +11,7 @@ var courseSchema = new mongoose.Schema({
     times       : [],
     notes       : String,
     color       : String,
-    university  : String,
-    department  : String,
-    programme  : String,
+    programme   : String,
 });
 
 // define our course model

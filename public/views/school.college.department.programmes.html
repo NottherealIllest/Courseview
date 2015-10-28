@@ -1,0 +1,20 @@
+<div class="container content" ng-controller="ProgrammeController">
+    <div class="row ">
+        <div class="col-md-3" ng-repeat="programme in programmes">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <div class="text-center">
+                            <h2 class="m-b-xs">{{programme.name}}</h2>
+                            <p class="font-bold text-success">{{programme.location}}</p>
+                            <div class="m">
+                                <i class="pe-7s-science fa-5x"></i>
+                            </div>
+                            <select class="form-control" style="width: 50%; margin: 0 auto;" name="choose_level" ng-model="chosen_level" ng-options="day for day in programme.levels">
+							</select>
+                            <button class="btn btn-success btn-sm" ng-click="show_timetable(programme._id, chosen_level)">View Timetable</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>

@@ -1,78 +1,15 @@
-'use strict'
+'use strict';
 
 var headers = ["Time", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-var courses = [{coursename: "Intro To Database Management System", 
-                "coursecode": "CSC301",
-                "level": "300",
-                "programme": "Computer Science",
-                "department": "Computer Science",
-                "college": "COLICT",
-                "university": "Bells University",
-                color: "blue", 
-                time: [{coursetime: 7, courseday: "Monday", courselocation: "Room 1"}, 
-                                                            {coursetime: 8, courseday: "Monday", courselocation: "Room 1"},
-                                                            {coursetime: 12, courseday: "Tuesday", courselocation: "Edozien"}, 
-                                                            {coursetime: 17, courseday: "Friday", courselocation: "MPH"}]},
-               
-               {"coursename": "Numerical Methods", 
-                "coursecode": "CSC302",
-                "level": "300",
-                "programme": "Computer Science",
-                "department": "Computer Science",
-                "college": "COLICT",
-                "university": "Bells University",
-                "color": "green", 
-                "time": [{coursetime: 7, courseday:"Tuesday", courselocation: "Room 4", },
-                                                            {coursetime: 7, courseday:"Thursday", courselocation: "Room 4", }]},
-               
-               {"coursename": "Learning AngularJS",
-                "coursecode": "CSC304",
-                "level": "300",
-                "programme": "Computer Science",
-                "department": "Computer Science",
-                "college": "COLICT",
-                "university": "Bells University",
-                "color": "yellow", 
-                "time":[{coursetime: 7, courseday:"Thursday", courselocation: "Room 15"},
-                                                              {coursetime: 8, courseday:"Thursday", courselocation: "Edozien"},
-                                                              {coursetime: 17, courseday:"Thursday", courselocation: "Edozien"},
-                                                              {coursetime: 7, courseday:"Saturday", courselocation: "Room 2"}]},
-               
-               {"coursename": "Operating Systems", 
-                "coursecode": "CSC307",
-                "level": 300,
-                "programme": "Computer Science",
-                "department": "Computer Science",
-                "college": "COLICT",
-                "university": "Bells University",
-                "color": "cyan", 
-                "time": [{coursetime: 8,courseday:"Wednesday", "courselocation": "Room 9"},
-                                                              {coursetime: 14, courseday:"Wednesday", courselocation: "Hall B"},
-                                                              {coursetime: 12, courseday:"Wednesday", courselocation: "Room 2"},
-                                                              {coursetime: 13, courseday:"Wednesday", courselocation: "Room 2"}]},
-               
-               {"coursename": "Data Structure & Algorithms ",
-                "coursecode": "CSC310",
-                "level": "300",
-                "programme": "Computer Science",
-                "department": "Computer Science",
-                "college": "COLICT",
-                "university": "Bells University",
-                "color": "red", 
-                "time": [{coursetime: 16, courseday: "Monday", courselocation: "Hall B"}, 
-                                                            {coursetime: 17, courseday: "Monday", courselocation: "Hall B"},
-                                                            {coursetime: 12, courseday: "Tuesday", courselocation: "Hall B"},
-                                                            {coursetime: 9, courseday:"Thursday", courselocation: "MPH"}]}
-              ];
 
-var dayTimes = function(){
+var dayTimes = function () {
     this.Monday = {};
     this.Tuesday = {};
     this.Wednesday = {};
     this.Thursday = {};
     this.Friday = {};
     this.Saturday = {};
-}
+};
 
 var times = {
         7 : new dayTimes() ,
@@ -97,26 +34,71 @@ function course_loop(c){
     }
 }
 
-//courses.forEach(course_loop);
-//console.log(times2);
-   
-angular.module('courseview.timetable', ['courseview.courseModal'])
-    .controller('TimetableController', ['$scope', 'courseService', '$modal', function($scope, courseService, $modal){
-        $scope.start = 1;
-        $scope.headers = headers;
-        courseService.getCourses().success(function(courses){
-            courses.forEach(course_loop);
-            $scope.courses = courses;
-        });
-        $scope.times = times;
-        $scope.title = 'Timetable Controller2';
+function TimetableController($scope, courseService, schoolService, $modal, notify, $stateParams){
+    console.log($stateParams);
+	
+	$scope.headers = headers;
+	$scope.courses = [];
+	$scope.times = times;
+	$scope.title = 'Timetable Controller2';
+	
+	
+	courseService.getCourses($stateParams.programmeId, $stateParams.level)
+		.success(function(courses){
+			
+			
+			//check if it is a new timetable without any course yet
+			if(courses.length >= 1){
+				courses.forEach(course_loop);
+				$scope.courses = courses;
+			}else{
+				$scope.times = new times
+			}
+		
+			$scope.skeleton = {
+					"level": $stateParams.level,
+					"times": [],
+					"programme": $stateParams.programmeId
+			};
+
+		})
+		.error(function(error){
+			$scope.message = error;
+			notify("Error Retrieving Courses: " + error);
+		});
+
+	$scope.open = function(){
+		var $modalInstance = $modal.open({
+				animation: true,
+				templateUrl: 'views/course.create.modal.html',
+				controller: 'courseEditModalController',
+				resolve : {
+					course: function () {
+						return $scope.skeleton;
+					}
+				}
+		});
+
+		$modalInstance.result.then(function (course) {
+			courseService.createCourse(course).
+			success(function (response) {
+				console.log(response);
+				$scope.courses.push(response);
+				$scope.refresh();
+				notify("Course created");
+			}).
+			error(function(error, status){
+				notify("Error creating course:" + error);
+			});
+		});
+	};
+
+	$scope.refresh = function () {
+		$scope.courses.forEach(course_loop);
+	}
         
-        $scope.open = function(){
-            var $modalInstance = $modal.open({
-                    animation: true,
-                    templateUrl: 'views/course.create.modal.html',
-                    controller: 'courseEditModalCtrl',
-                }
-            );
-        };
-    }]);
+}
+
+angular.module('courseview.timetable', ['courseview.courseModal'])
+    .controller('TimetableController', ['$scope', 'courseService', 
+										'schoolService', '$modal', 'notify', '$stateParams', TimetableController]);

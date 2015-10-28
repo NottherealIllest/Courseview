@@ -1,11 +1,11 @@
 // grab the mongoose module
 var mongoose = require('mongoose');
-var department = require('./department');
 
 var collegeSchema = new mongoose.Schema({
+	university	 : String,
     name         : String,
-    departments  : [department],
-    location     : String
+    location     : String,
+	description  : String
 });
 
 // define our course model

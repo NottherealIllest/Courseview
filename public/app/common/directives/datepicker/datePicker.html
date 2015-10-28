@@ -8,8 +8,7 @@
         </select>
     </div>
     <div class="col-md-6">
-        <input class="form-control" type="text" name="course_location" value="{{time.courselocation}}"
-               placeholder="Course Location" style="width:80%; display:inline">
-        <button class="btn btn-xs">&#10006;</button>
+        <input class="form-control" type="text" name="course_location" ng-model="time.courselocation" placeholder="Course Location" style="width:80%; display:inline">
+        <button class="btn btn-xs" ng-click="remove_date($index)">&#10006;</button>
     </div>
 </div>

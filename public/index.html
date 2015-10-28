@@ -9,8 +9,6 @@
 
         <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
         <link rel="stylesheet" href="./components/bootstrap/dist/css/bootstrap.css"/>
-        <link rel="stylesheet" href="./components/angular-material/angular-material.css"/>
-        <link rel="stylesheet" href="components/fullcalendar/dist/fullcalendar.css"/>
         <link rel="stylesheet" href="components/angular-bootstrap/ui-bootstrap-csp.css"/>
         <link rel="stylesheet" href="components/animate.css/animate.min.css"/>
         <link rel="stylesheet" href="components/angular-notify/dist/angular-notify.css"/>
@@ -41,10 +39,7 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <a ui-sref="course.timetable">Course</a>
-                            </li>
-                            <li>
-                                <a ui-sref="schools">Schools</a>
+                                <a ui-sref="school.home">Schools</a>
                             </li>
                             <li>
                                 <a href="#about">About</a>
@@ -77,14 +72,10 @@
                             </li>
                             <li class="footer-menu-divider">&sdot;</li>
                             <li>
-                                <a ui-sref="#services">Services</a>
-                            </li>
-                            <li class="footer-menu-divider">&sdot;</li>
-                            <li>
                                 <a ui-sref="#contact">Contact</a>
                             </li>
                         </ul>
-                        <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
+                        <p class="copyright text-muted small">Copyright &copy; Course Set 2015. All Rights Reserved</p>
                     </div>
                 </div>
             </div>
@@ -100,14 +91,16 @@
             <script src="components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
             <script src="components/StickyTableHeaders/js/jquery.stickytableheaders.min.js"></script>
             <script src="components/angular-notify/dist/angular-notify.js"></script>
-            <script src="app/timetable/directives/courseCellDirective.js"></script>
+            <script src="app/course/directives/courseCellDirective.js"></script>
             <script type="text/javascript" src="app/home/home.js"></script>
             <script src="app/course/courseModal.js"></script>
             <script src="app/common/directives/datepicker/datePicker.js"></script>
             <script src="app/course/course.js"></script>
             <script src='app/course/timetable.js'></script>
+            <script src='app/schools/schools.js'></script>
             <script src="app/timetable/timetableService.js"></script>
             <script src="app/course/courseService.js"></script>
+            <script src="app/schools/schoolService.js"></script>
             <script src="app/appRoutes.js"></script>
             <script src="app/app.js"></script>
         </footer>

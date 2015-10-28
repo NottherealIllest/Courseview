@@ -1,0 +1,74 @@
+<div class="container content" ng-controller="SchoolController">
+    <div class="row ">
+        <div class="col-md-3" ng-repeat="school in schools">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <div class="text-center">
+                            <h2 class="m-b-xs">{{school.name}}</h2>
+                            <p class="font-bold text-success">{{school.town}}, {{school.state}}</p>
+                            <div class="m">
+                                <i class="pe-7s-science fa-5x"></i>
+                            </div>
+                            <p class="small">
+                                {{school.description}}
+                            </p>
+                            <a ui-sref="school.college({schoolId: school._id})" class="btn btn-success btn-sm">View Colleges</a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+<!--
+        <div class="col-md-3">
+            <div class="hpanel">
+                <div class="panel-body">
+                    <div class="text-center">
+                            <h2 class="m-b-xs">Convenant University</h2>
+                            <p class="font-bold text-success">Ota, Ogun</p>
+                            <div class="m">
+                                <i class="pe-7s-science fa-5x"></i>
+                            </div>
+                            <p class="small">
+                                Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            </p>
+                            <button class="btn btn-success btn-sm">View Colleges</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="hpanel">
+                <div class="panel-body">
+                    <div class="text-center">
+                            <h2 class="m-b-xs">University Of Lagos</h2>
+                            <p class="font-bold text-success">Ota, Ogun</p>
+                            <div class="m">
+                                <i class="pe-7s-science fa-5x"></i>
+                            </div>
+                            <p class="small">
+                                Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            </p>
+                            <button class="btn btn-success btn-sm">View Colleges</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="hpanel">
+                <div class="panel-body">
+                    <div class="text-center">
+                            <h2 class="m-b-xs">Babcock University</h2>
+                            <p class="font-bold text-success">Ota, Ogun</p>
+                            <div class="m">
+                                <i class="pe-7s-science fa-5x"></i>
+                            </div>
+                            <p class="small">
+                                Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            </p>
+                            <button class="btn btn-success btn-sm">View Colleges</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+-->
+    </div>
+</div>

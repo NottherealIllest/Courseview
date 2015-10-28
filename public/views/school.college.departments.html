@@ -1,0 +1,21 @@
+<div class="container content" ng-controller="DepartmentController">
+    <div class="row ">
+        <div class="col-md-3" ng-repeat="department in departments">
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <div class="text-center">
+                            <h2 class="m-b-xs">{{department.name}}</h2>
+                            <p class="font-bold text-success">{{department.location}}</p>
+                            <div class="m">
+                                <i class="pe-7s-science fa-5x"></i>
+                            </div>
+                            <p class="small">
+                                {{department.description}}
+                            </p>
+                            <button ui-sref="school.programme({departmentId: department._id})" class="btn btn-success btn-sm">View Programmes</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
