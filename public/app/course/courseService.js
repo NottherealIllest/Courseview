@@ -1,10 +1,8 @@
 angular.module('courseview.course')
     .factory('courseService', ['$http', function($http){
-        if(process.env.NODE_ENV == "production"){
-			var dbs = "https://courseview.herokuapp.com/api";
-		}else{
-			var dbs = "http://localhost:3000/api";
-		}
+		
+		var dbs = "https://courseview.herokuapp.com/api";
+		
         return {
             getCourses: function(programmeId, level) {
 				console.log(programmeId, level);
