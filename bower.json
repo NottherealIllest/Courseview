@@ -15,5 +15,8 @@
     "angular-bootstrap": "~0.13.1",
     "animate.css": "~3.4.0",
     "angular-notify": "~2.5.0"
+  },
+  "resolutions": {
+    "angular": "^1.4.1"
   }
 }
