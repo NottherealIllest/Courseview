@@ -5,8 +5,6 @@ var router = require('express').Router();
 var response = require('../api/response');
 var mongoose = require('mongoose');
 
-console.log(db);
-
 mongoose.connect(db.url, function(err)  {
     if(err){
 		
