@@ -1,12 +1,14 @@
 angular.module('courseview.school')
     .factory('schoolService', ['$http', function($http){
-//		if(process.env.NODE_ENV == "production"){
-//			var dbs = "https://courseview.herokuapp.com/api";
-//		}else{
-//			var dbs = "http://localhost:3000/api";
-//		}
 		
-		var dbs = "https://courseview.herokuapp.com/api";
+		if(window.location.host.match(/localhost/)){
+			
+			var dbs = "http://localhost:3000/api";
+			
+		}else{
+			
+			var dbs = "https://courseview.herokuapp.com/api";
+		}
         
         return {
             getSchools: function () {

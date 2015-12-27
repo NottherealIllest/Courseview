@@ -1,11 +1,17 @@
 angular.module('courseview.course')
     .factory('courseService', ['$http', function($http){
 		
-		var dbs = "https://courseview.herokuapp.com/api";
+		if(window.location.host.match(/localhost/)){
+			
+			var dbs = "http://localhost:3000/api";
+			
+		}else{
+			
+			var dbs = "https://courseview.herokuapp.com/api";
+		}
 		
         return {
             getCourses: function(programmeId, level) {
-				console.log(programmeId, level);
                 return $http.get(dbs + '/programme/' + programmeId + '/courses/' + level);
             },
             

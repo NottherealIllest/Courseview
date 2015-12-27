@@ -27,32 +27,21 @@ var times = {
         19: new dayTimes()
 };
 
-function course_loop(c){
-    var index;
-    for(index = 0; index < c.times.length; index++){
-        times[c.times[index].coursetime][c.times[index].courseday] = c;
-    }
-}
 
 function TimetableController($scope, courseService, schoolService, $modal, notify, $stateParams){
-    console.log($stateParams);
-	
 	$scope.headers = headers;
 	$scope.courses = [];
-	$scope.times = times;
+	$scope.times = angular.copy(times);
 	$scope.title = 'Timetable Controller2';
-	
 	
 	courseService.getCourses($stateParams.programmeId, $stateParams.level)
 		.success(function(courses){
-			
 			
 			//check if it is a new timetable without any course yet
 			if(courses.length >= 1){
 				courses.forEach(course_loop);
 				$scope.courses = courses;
 			}else{
-				$scope.times = new times
 			}
 		
 			$scope.skeleton = {
@@ -95,6 +84,13 @@ function TimetableController($scope, courseService, schoolService, $modal, notif
 
 	$scope.refresh = function () {
 		$scope.courses.forEach(course_loop);
+	}
+	
+	function course_loop(c){
+		var index;
+		for(index = 0; index < c.times.length; index++){
+			$scope.times[c.times[index].coursetime][c.times[index].courseday] = c;
+		}
 	}
         
 }
