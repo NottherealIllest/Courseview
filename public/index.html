@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html ng-app="CourseView">
     
     <head>
         <meta charset="utf-8">
@@ -20,7 +20,7 @@
         
     </head>
     
-    <body ng-app="CourseView">
+    <body ng-controller="AppController">
         <div class="header">
             <!-- Navigation -->
             <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
@@ -42,10 +42,13 @@
                                 <a ui-sref="school.home">Schools</a>
                             </li>
                             <li>
-                                <a href="#about">About</a>
+                                <a ng-click="openLoginModal()">Sign In</a>
                             </li>
                             <li>
-                                <a href="#contact">Contact</a>
+                                <a href="#signout">Create Account</a>
+                            </li>
+                            <li>
+                                <a href="#timetables">My Timetables</a>
                             </li>
                         </ul>
                     </div>
@@ -83,16 +86,21 @@
             <script src="components/jquery/dist/jquery.js"></script>
             <script src="components/moment/min/moment.min.js"></script>
             <script src="components/bootstrap/dist/js/bootstrap.js"></script>
+            <script src="components/firebase/firebase-debug.js"></script>
+            <script src="components/fullcalendar/dist/fullcalendar.js"></script>
+            
             <script src="components/angular/angular.js"></script>
+            
+            <script src="components/angularfire/dist/angularfire.js"></script>
             <script src="components/angular-ui-router/release/angular-ui-router.js"></script>
             <script src="components/angular-animate/angular-animate.js"></script>
             <script src="components/angular-aria/angular-aria.js"></script>
-            <script src="components/fullcalendar/dist/fullcalendar.js"></script>
             <script src="components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-            <script src="components/StickyTableHeaders/js/jquery.stickytableheaders.min.js"></script>
             <script src="components/angular-notify/dist/angular-notify.js"></script>
+            
             <script src="app/course/directives/courseCellDirective.js"></script>
-            <script type="text/javascript" src="app/home/home.js"></script>
+            <script src="app/home/home.js"></script>
+            <script src="app/login/login.js"></script>
             <script src="app/course/courseModal.js"></script>
             <script src="app/common/directives/datepicker/datePicker.js"></script>
             <script src="app/course/course.js"></script>

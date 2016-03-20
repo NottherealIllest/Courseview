@@ -14,7 +14,8 @@
     "momentjs": "~2.10.3",
     "angular-bootstrap": "~0.13.1",
     "animate.css": "~3.4.0",
-    "angular-notify": "~2.5.0"
+    "angular-notify": "~2.5.0",
+    "angularfire": "^1.1.4"
   },
   "resolutions": {
     "angular": "^1.4.1"
