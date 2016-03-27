@@ -1,4 +1,28 @@
 <div class="container content" ng-controller="SchoolController">
+    <md-content layout-padding>
+        <md-grid-list md-cols="6" md-cols-sm="3" md-cols-md="3" md-row-height="200" md-gutter="1em">
+            <md-grid-tile md-colspan="1" ng-repeat="school in schools">
+                <md-grid-tile-header>
+                    <h3>{{school.name}}</h3>
+                </md-grid-tile-header>
+                
+                <md-whiteframe>
+                    <p class="font-bold text-success">{{scholl.location}}</p>
+                    <div class="m">
+                        <i class="pe-7s-science fa-5x"></i>
+                    </div>
+                    <p class="small">
+                        {{school.description}}
+                    </p>
+                </md-whiteframe>
+                
+                <md-grid-tile-footer>
+                    <md-button ui-sref="school.college({schoolId: school._id})" class="md-raised md-primary">View Colleges</md-button>
+                </md-grid-tile-footer>
+            </md-grid-tile>
+        </md-grid-list>
+    </md-content>
+<!--
     <div class="row ">
         <div class="col-md-3" ng-repeat="school in schools">
                 <div class="hpanel">
@@ -18,4 +42,5 @@
                 </div>
         </div>
     </div>
+-->
 </div>

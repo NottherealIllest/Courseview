@@ -77,6 +77,14 @@ table td, th{
     padding: 10px 5px;
 }
 
+.fixed-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
 @media(min-width:1199px) {
     table td{
         width: 150px;

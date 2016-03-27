@@ -1,48 +1,51 @@
-<div class="modal-header">
-    <h3>Save Course</h3>
-</div>
-<div class="modal-body">
-    <form novalidate class="form">
-        <div class="form-group">
-            <label>Course Name<span class="required"> *</span></label>
-            <input class="form-control" type="text" name="course_name" ng-model="course.coursename">
+<md-dialog aria-label="Course Modal">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>Save Course</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <i class="material-icons">clear</i>
+            </md-button>
         </div>
-        <div class="form-group">
-            <label>Course Code<span class="required"> *</span></label>
-            <input class="form-control" type="text" name="course_code" ng-model="course.coursecode">
+    </md-toolbar>
+    
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <form novalidate class="form">
+                <div class="form-group">
+                    <label>Course Name<span class="required"> *</span></label>
+                    <input class="form-control" type="text" name="course_name" ng-model="course.coursename">
+                </div>
+                <div class="form-group">
+                    <label>Course Code<span class="required"> *</span></label>
+                    <input class="form-control" type="text" name="course_code" ng-model="course.coursecode">
+                </div>
+                <div class="form-group">
+                    <label>Color<span class="required"> *</span></label>
+                    <input class="form-control" type="color" name="course_color" ng-model="course.color">
+                </div>
+                <div class="panel">
+                    <div class="form-group">
+                        <label>Time<span class="required" style="padding-right:20px"> *</span></label>
+                        <button class="btn-sm btn btn-success" ng-click="add_date()">Add Date</button>
+                    </div>
+                    <date-picker ng-repeat="time in course.times"></date-picker>
+                </div>
+                <div class="form-group">
+                    <label>Level</label>
+                    <input class="form-control" disabled type="text" name="course_level" value="{{course.level}}">
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <label>Color<span class="required"> *</span></label>
-            <input class="form-control" type="color" name="course_color" ng-model="course.color">
-        </div>
-        <div class="panel">
-            <div class="form-group">
-                <label>Time<span class="required" style="padding-right:20px"> *</span></label>
-                <button class="btn-sm btn btn-success" ng-click="add_date()">Add Date</button>
-            </div>
-            <date-picker ng-repeat="time in course.times"></date-picker>
-        </div>
-        <div class="form-group">
-            <label>Level</label>
-            <input class="form-control" disabled type="text" name="course_level" value="{{course.level}}">
-        </div>
-<!--
-        <div class="form-group">
-            <label>Programme</label>
-            <input class="form-control" disabled type="text" name="course_programme" value="{{course.programme}}">
-        </div>
-        <div class="form-group">
-            <label>Department</label>
-            <input class="form-control" disabled type="text" name="course_department" value="{{course.department}}">
-        </div>
-        <div class="form-group">
-            <label>College</label>
-            <input class="form-control" disabled type="text" name="course_college" value="{{course.college}}">
-        </div>
--->
-    </form>
-</div>
-<div class="modal-footer">
-    <button class="btn btn-success" ng-click="save()">Save</button> 
-    <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
-</div>
+    </md-dialog-content>
+    
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-click="save()">
+            Save
+        </md-button>
+        <md-button ng-click="cancel()">
+            Cancel
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

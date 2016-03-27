@@ -1,7 +1,7 @@
 "use strict"
 
 angular.module("courseview.coursecell", [])
-    .directive('courseCell', ['$modal', 'courseService', 'notify', function($modal, courseService, notify){
+    .directive('courseCell', ['$mdDialog', 'courseService', 'notify', function($modal, courseService, notify){
         return {
             scope : {
                 course : '='
@@ -16,11 +16,14 @@ angular.module("courseview.coursecell", [])
                 }
                 
                 $scope.open = function(){
-                    var $modalInstance = $modal.open(
+                    var $modalInstance = $modal.show(
                         {
-                            animation: true,
                             templateUrl: 'views/course.create.modal.html',
                             controller: 'courseEditModalController',
+                            clickOutsideToClose: true,
+                            openFrom: "left",
+                            closeTo: "right",
+                            fullscreen: true,
                             resolve: {
                                 course: function(){
                                     return $scope.course;
@@ -29,7 +32,7 @@ angular.module("courseview.coursecell", [])
                         }
                     );
                     
-                    $modalInstance.result.then(function(course){
+                    $modalInstance.then(function(course){
                         courseService.updateCourse(course._id, course).
                             success(function(data){
                                 notify('Course Updated');

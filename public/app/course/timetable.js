@@ -28,7 +28,7 @@ var times = {
 };
 
 
-function TimetableController($scope, courseService, schoolService, $modal, notify, $stateParams){
+function TimetableController($scope, courseService, schoolService, $mdDialog, notify, $stateParams){
 	$scope.headers = headers;
 	$scope.courses = [];
 	$scope.times = angular.copy(times);
@@ -57,10 +57,10 @@ function TimetableController($scope, courseService, schoolService, $modal, notif
 		});
 
 	$scope.open = function(){
-		var $modalInstance = $modal.open({
-				animation: true,
+		var $modalInstance = $mdDialog.show({
 				templateUrl: 'views/course.create.modal.html',
 				controller: 'courseEditModalController',
+                parent: angular.element(document.body),
 				resolve : {
 					course: function () {
 						return $scope.skeleton;
@@ -68,7 +68,7 @@ function TimetableController($scope, courseService, schoolService, $modal, notif
 				}
 		});
 
-		$modalInstance.result.then(function (course) {
+		$modalInstance.then(function (course) {
 			courseService.createCourse(course).
 			success(function (response) {
 				console.log(response);
@@ -97,4 +97,4 @@ function TimetableController($scope, courseService, schoolService, $modal, notif
 
 angular.module('courseview.timetable', ['courseview.courseModal'])
     .controller('TimetableController', ['$scope', 'courseService', 
-										'schoolService', '$modal', 'notify', '$stateParams', TimetableController]);
+										'schoolService', '$mdDialog', 'notify', '$stateParams', TimetableController]);

@@ -1,20 +1,24 @@
 <div ng-controller="MainController">
     <!-- Header -->
-    <div class="intro-header">
+    <md-content style="background-color:#303f9f">
         <div class="container">
 
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="intro-message">
+                    <div class="intro-message" style="text-align:center; color:white">
                         <h1>{{main_title}}</h1>
                         <h3>The Timetable you have been waiting for.</h3>
                         <hr class="intro-divider">
                         <ul class="list-inline intro-social-buttons">
                             <li>
-                                <a ui-sref="course.timetable" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Courses</span></a>
+                                <md-button class="md-raised" aria-label="timetable" ui-sref="course.timetable">
+                                    <span class="network-name">Courses</span>
+                                </md-button>
                             </li>
                             <li>
-                                <a ui-sref="school.home" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Schools</span></a>
+                                <md-button class="md-raised" aria-label="timetable" ui-sref="school.home">
+                                    <span class="network-name">Schools</span>
+                                </md-button>
                             </li>
                         </ul>
                     </div>
@@ -24,8 +28,8 @@
         </div>
         <!-- /.container -->
 
-    </div>
-    <!-- /.intro-header -->
+    </md-content>
+    <!-- /.md-content -->
 
     <!-- Page Content -->
 

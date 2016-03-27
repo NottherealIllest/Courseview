@@ -7,12 +7,13 @@ angular.
 module('CourseView', ['ui.router', 
                               'appRoutes', 
                               'firebase',
+                              'ngMaterial',
                               'courseview.home', 
                               'courseview.course',
                               'courseview.timetable', 
 							  'courseview.school',
                               'courseview.coursecell', 
-                              'ui.bootstrap',
+//                              'ui.bootstrap',
                               'courseview.courseModal',
                               'courseview.loginModal',
                               'cgNotify']).
@@ -22,6 +23,12 @@ module('CourseView', ['ui.router',
  * 
  */
 controller('AppController', ['$scope', '$firebaseAuth', function($scope, $firebaseAuth){
+    $scope.isToolbarOpen = true;
+    
+    $scope.toggleToolbar = function () {
+        $scope.tbOpen = !$scope.tbOpen;
+        return $scope.tbOpen;
+    }
     
     $scope.openLoginModal = function(){
         

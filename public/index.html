@@ -8,8 +8,10 @@
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
 
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="./components/bootstrap/dist/css/bootstrap.css"/>
-        <link rel="stylesheet" href="components/angular-bootstrap/ui-bootstrap-csp.css"/>
+        <link rel="stylesheet" href="components/angular-material/angular-material.css"/>
+<!--        <link rel="stylesheet" href="components/angular-bootstrap/ui-bootstrap-csp.css"/>-->
         <link rel="stylesheet" href="components/animate.css/animate.min.css"/>
         <link rel="stylesheet" href="components/angular-notify/dist/angular-notify.css"/>
         <link rel="stylesheet" href="assets/css/landing-page.css"/>
@@ -21,42 +23,22 @@
     </head>
     
     <body ng-controller="AppController">
-        <div class="header">
-            <!-- Navigation -->
-            <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
-                <div class="container topnav">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#timeMenu">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand topnav" href="#">Course View</a>
-                    </div>
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="timeMenu">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <a ui-sref="school.home">Schools</a>
-                            </li>
-                            <li>
-                                <a ng-click="openLoginModal()">Sign In</a>
-                            </li>
-                            <li>
-                                <a href="#signout">Create Account</a>
-                            </li>
-                            <li>
-                                <a href="#timetables">My Timetables</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /.navbar-collapse -->
-                </div>
-                <!-- /.container -->
-            </nav>
-        </div>
+        <a class="fa fa-ellipsis-v"></a>
+        <md-toolbar md-scroll-shrink="true" class="fixed-top">
+            <div class="md-toolbar-tools">
+                <img src="favicon.ico" height=24 width=24 />
+                <span flex></span>
+                <md-button aria-label="schools" ng-href="#/schools" class="">
+                    SCHOOLS
+                </md-button>
+                <md-button aria-label="login" ng-href="#/login">
+                    LOGIN
+                </md-button>
+                <md-button aria-label="sign up" ng-href="#/signup">
+                    SIGN UP
+                </md-button>
+            </div>
+        </md-toolbar>
         
         <div ui-view style="min-height:100%">
         </div>
@@ -87,7 +69,7 @@
             <script src="components/moment/min/moment.min.js"></script>
             <script src="components/bootstrap/dist/js/bootstrap.js"></script>
             <script src="components/firebase/firebase-debug.js"></script>
-            <script src="components/fullcalendar/dist/fullcalendar.js"></script>
+<!--            <script src="components/fullcalendar/dist/fullcalendar.js"></script>-->
             
             <script src="components/angular/angular.js"></script>
             
@@ -95,8 +77,9 @@
             <script src="components/angular-ui-router/release/angular-ui-router.js"></script>
             <script src="components/angular-animate/angular-animate.js"></script>
             <script src="components/angular-aria/angular-aria.js"></script>
-            <script src="components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<!--            <script src="components/angular-bootstrap/ui-bootstrap-tpls.js"></script>-->
             <script src="components/angular-notify/dist/angular-notify.js"></script>
+            <script src="components/angular-material/angular-material.js"></script>
             
             <script src="app/course/directives/courseCellDirective.js"></script>
             <script src="app/home/home.js"></script>
