@@ -28,7 +28,7 @@ var times = {
 };
 
 
-function TimetableController($scope, courseService, schoolService, $mdDialog, notify, $stateParams){
+function TimetableController($scope, courseService, schoolService, $mdDialog, $mdToast, $stateParams){
 	$scope.headers = headers;
 	$scope.courses = [];
 	$scope.times = angular.copy(times);
@@ -46,21 +46,26 @@ function TimetableController($scope, courseService, schoolService, $mdDialog, no
 		
 			$scope.skeleton = {
 					"level": $stateParams.level,
-					"times": [],
+					"times": [{}],
+                    "color": "#0000FF",
 					"programme": $stateParams.programmeId
 			};
 
 		})
 		.error(function(error){
 			$scope.message = error;
-			notify("Error Retrieving Courses: " + error);
+			$mdToast.show(
+                $mdToast.simple()
+                    .textContent(error)
+            );
 		});
 
 	$scope.open = function(){
 		var $modalInstance = $mdDialog.show({
 				templateUrl: 'views/course.create.modal.html',
 				controller: 'courseEditModalController',
-                parent: angular.element(document.body),
+                fullscreen: true,
+                clickOutsideToClose: true,
 				resolve : {
 					course: function () {
 						return $scope.skeleton;
@@ -74,10 +79,16 @@ function TimetableController($scope, courseService, schoolService, $mdDialog, no
 				console.log(response);
 				$scope.courses.push(response);
 				$scope.refresh();
-				notify("Course created");
+				$mdToast.show(
+                    $mdToast.simple()
+                        .textContent("Course Created")
+                );
 			}).
 			error(function(error, status){
-				notify("Error creating course:" + error);
+				$mdToast.show(
+                    $mdToast.simple()
+                        .textContent(error)
+                );
 			});
 		});
 	};
@@ -97,4 +108,4 @@ function TimetableController($scope, courseService, schoolService, $mdDialog, no
 
 angular.module('courseview.timetable', ['courseview.courseModal'])
     .controller('TimetableController', ['$scope', 'courseService', 
-										'schoolService', '$mdDialog', 'notify', '$stateParams', TimetableController]);
+										'schoolService', '$mdDialog', '$mdToast', '$stateParams', TimetableController]);

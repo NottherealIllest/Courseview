@@ -1,12 +1,13 @@
 <div class="container content" ng-controller="SchoolController">
-    <md-content layout-padding>
-        <md-grid-list md-cols="6" md-cols-sm="3" md-cols-md="3" md-row-height="200" md-gutter="1em">
-            <md-grid-tile md-colspan="1" ng-repeat="school in schools">
-                <md-grid-tile-header>
-                    <h3>{{school.name}}</h3>
-                </md-grid-tile-header>
-                
-                <md-whiteframe>
+    <md-content layout="row" layout-xs="column" layout-wrap>
+        <div ng-repeat="school in schools" flex="33" flex-xs="100">
+            <md-card >
+                <md-card-header>
+                    <md-card-header-text>
+                        <h3 class="md-title">{{school.name}}</h3>
+                    </md-card-header-text>
+                </md-card-header>
+                <md-card-content>
                     <p class="font-bold text-success">{{scholl.location}}</p>
                     <div class="m">
                         <i class="pe-7s-science fa-5x"></i>
@@ -14,13 +15,12 @@
                     <p class="small">
                         {{school.description}}
                     </p>
-                </md-whiteframe>
-                
-                <md-grid-tile-footer>
-                    <md-button ui-sref="school.college({schoolId: school._id})" class="md-raised md-primary">View Colleges</md-button>
-                </md-grid-tile-footer>
-            </md-grid-tile>
-        </md-grid-list>
+                </md-card-content>
+                <md-card-actions>
+                    <md-button ui-sref="school.college({schoolId: school._id})" class="">View Colleges</md-button>
+                </md-card-actions>
+            </md-card>
+        </div>
     </md-content>
 <!--
     <div class="row ">

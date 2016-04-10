@@ -13,10 +13,8 @@ module('CourseView', ['ui.router',
                               'courseview.timetable', 
 							  'courseview.school',
                               'courseview.coursecell', 
-//                              'ui.bootstrap',
                               'courseview.courseModal',
-                              'courseview.loginModal',
-                              'cgNotify']).
+                              'courseview.loginModal']).
 
 /**
  *  Created to allow registration of modal for login box
