@@ -32,6 +32,10 @@ var Programme = require('../models/programme');
 var Course = require('../models/course');
 
 
+//Authentication Endpoints
+var authenticate = require('../routes/authenticate')(router);
+
+
 //Course API Endpoints
 
 //get all courses in mongodb
@@ -247,11 +251,6 @@ router.get('/programme/:id/courses/:level', function(req, res, next){
 
 module.exports = router;
 
-//test route for elastix call center
-router.get('/customer/', function(req, res, next){
-    var phone = req.params('number');
-    res.send("Wale M - " + phone);
-});
 
 
     

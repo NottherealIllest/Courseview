@@ -1,5 +1,8 @@
 <div class="container content" ng-controller="CollegeController">
     <md-content layout="row" layout-xs="column" layout-wrap>
+        <div class="flex-100" style="text-align:center">
+            <h2>{{noContent}}</h2>
+        </div>
         <div ng-repeat="college in colleges" flex="33" flex-xs="100">
             <md-card >
                 <md-card-header>
@@ -17,25 +20,4 @@
             </md-card>
         </div>
     </md-content>
-<!--
-    <div class="row ">
-        <div class="col-md-3" ng-repeat="college in colleges">
-                <div class="hpanel">
-                    <div class="panel-body">
-                        <div class="text-center">
-                            <h2 class="m-b-xs">{{college.name}}</h2>
-                            <p class="font-bold text-success">{{college.location}}</p>
-                            <div class="m">
-                                <i class="pe-7s-science fa-5x"></i>
-                            </div>
-                            <p class="small">
-                                {{college.description}}
-                            </p>
-                            <button ui-sref="school.department({collegeId: college._id})" class="btn btn-success btn-sm">View Departments</button>
-                        </div>
-                    </div>
-                </div>
-        </div>
-    </div>
--->
 </div>
