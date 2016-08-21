@@ -1,6 +1,6 @@
 "use strict"
 
-angular.module("courseview.courseModal", ['courseview.common.datepicker']).controller("courseEditModalController", ['$scope', '$modalInstance', 'course', function($scope, $modalInstance, mainCourse){
+angular.module("courseview.courseModal", ['courseview.common.datepicker']).controller("courseEditModalController", ['$scope', '$mdDialog', 'course', function($scope, $mdDialog, mainCourse){
     var oldCourse = angular.copy(mainCourse);
     $scope.course = mainCourse;
     
@@ -14,7 +14,7 @@ angular.module("courseview.courseModal", ['courseview.common.datepicker']).contr
     },
     
     $scope.save = function(){
-        $modalInstance.close($scope.course);
+        $mdDialog.hide($scope.course);
     };
     
     $scope.cancel = function(){
@@ -22,6 +22,6 @@ angular.module("courseview.courseModal", ['courseview.common.datepicker']).contr
         mainCourse.coursename = oldCourse.coursename;
         mainCourse.color = oldCourse.color;
         mainCourse.times = oldCourse.times;
-        $modalInstance.dismiss('cancel');
+        $mdDialog.cancel('cancel');
     }
 }]);

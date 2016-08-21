@@ -23,11 +23,14 @@ var schoolModule = angular.module('courseview.school', []);
 		
 		$scope.colleges = [];
 		$scope.universityId = $stateParams.schoolId;
+        $scope.noContent = "";
 		schoolService.getSchoolColleges($scope.universityId)
 			.then(function (response) {
 				
 				console.log("Colleges", response);
 				$scope.colleges = response.data;
+                if($scope.colleges.length == 0)
+                    $scope.noContent = "No College Available";
 			
 			}, function (error) {
 				console.log(error);
@@ -44,6 +47,8 @@ var schoolModule = angular.module('courseview.school', []);
 				
 				console.log("Departments", response);
 				$scope.departments = response.data;
+                if($scope.departments.length == 0)
+                    $scope.noContent = "No Department Available";
 			
 			}, function (error) {
 				console.log(error);
@@ -62,6 +67,8 @@ var schoolModule = angular.module('courseview.school', []);
 				
 				console.log("Programmes", response);
 				$scope.programmes = response.data;
+                if($scope.programmes.length == 0)
+                    $scope.noContent = "No Programme Available";
 			
 			}, function (error) {
 				console.log(error);
