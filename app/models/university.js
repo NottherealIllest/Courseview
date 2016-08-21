@@ -5,7 +5,8 @@ var universitySchema = new mongoose.Schema({
     name      : String,
     location  : String,
     description: String,
-	img: String
+	img: String,
+    status: String
 });
 
 // define our course model

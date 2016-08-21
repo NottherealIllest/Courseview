@@ -93,7 +93,7 @@ router.put('/course/:id', function(req, res, next) {
 
 //get all universities
 router.get('/university', function(req, res, next){
-	University.find( {}, function (error, universities) {
+	University.find( {status:'active'}, function (error, universities) {
 		
 		if(error)
 			next(error);

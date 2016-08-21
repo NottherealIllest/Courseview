@@ -1,7 +1,10 @@
 <div class="container content" ng-controller="DepartmentController">
     <md-content layout="row" layout-xs="column" layout-wrap>
+       <div class="flex-100" style="text-align:center">
+            <h2>{{noContent}}</h2>
+        </div>
         <div ng-repeat="department in departments" flex="33" flex-xs="100">
-            <md-card >
+            <md-card class="">
                 
                 <md-card-header>
                     <md-card-header-text>
@@ -17,7 +20,7 @@
                 </md-card-content>
                 
                 <md-card-actions>
-                    <md-button ui-sref="school.programme({departmentId: department._id})">View Programmes</md-button>
+                    <md-button class="md-raised md-accent" ui-sref="school.programme({departmentId: department._id})">View Programmes</md-button>
                 </md-card-actions>
                 
             </md-card>
