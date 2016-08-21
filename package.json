@@ -1,6 +1,6 @@
 {
   "name": "CourseView",
-  "private": true,
+  "private": "true",
   "version": "1.1",
   "description": "A timetable app for university students",
   "license": "MIT",
@@ -23,7 +23,7 @@
     "serve-favicon": "~2.2.1"
   },
   "engines": {
-    "node": "0.12.7"
+    "node": "5.6.*"
   },
   "scripts": {
     "postinstall": "bower install",
