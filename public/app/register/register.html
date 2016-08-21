@@ -1,7 +1,7 @@
 <md-dialog aria-label="Course Modal">
     <md-toolbar>
         <div class="md-toolbar-tools">
-            <h3>Login</h2>
+            <h3>Register</h2>
             <span flex></span>
             <md-button class="md-icon-button" ng-click="cancel()" aria-label="close modal">
                 <md-icon md-svg-src="/assets/image/icons/ic_clear_48px.svg"></md-icon>
@@ -14,15 +14,17 @@
             <form novalidate class="form">
                 <md-input-container class="md-block">
                     <label>user name</label>
-                    <input ng-model="coursename">
-                    <span ng-show="errors.username" style="font-size:10px; color:red">Username Required</span>
+                    <input ng-model="course.coursename">
                 </md-input-container>
                 <md-input-container class="md-block">
                     <label>password</label>
-                    <input type="password" ng-model="password">
-                    <span ng-show="errors.password" style="font-size:10px; color:red">Password Required</span>
+                    <input type="password" ng-model="course.coursecode">
                 </md-input-container>
-                <md-button class="md-raised md-primary" on-click="login()">Login</md-button>
+                <md-input-container class="md-block">
+                    <label>Confirm password</label>
+                    <input type="password" ng-model="course.coursecode">
+                </md-input-container>
+                <md-button class="md-raised md-primary">Register</md-button>
             </form>
         </div>
     </md-dialog-content>

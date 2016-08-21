@@ -28,7 +28,7 @@ var times = {
 };
 
 
-function TimetableController($scope, courseService, schoolService, $modal, notify, $stateParams){
+function TimetableController($scope, courseService, schoolService, $mdDialog, $mdToast, $stateParams){
 	$scope.headers = headers;
 	$scope.courses = [];
 	$scope.times = angular.copy(times);
@@ -46,21 +46,26 @@ function TimetableController($scope, courseService, schoolService, $modal, notif
 		
 			$scope.skeleton = {
 					"level": $stateParams.level,
-					"times": [],
+					"times": [{}],
+                    "color": "#0000FF",
 					"programme": $stateParams.programmeId
 			};
 
 		})
 		.error(function(error){
 			$scope.message = error;
-			notify("Error Retrieving Courses: " + error);
+			$mdToast.show(
+                $mdToast.simple()
+                    .textContent(error)
+            );
 		});
 
 	$scope.open = function(){
-		var $modalInstance = $modal.open({
-				animation: true,
+		var $modalInstance = $mdDialog.show({
 				templateUrl: 'views/course.create.modal.html',
 				controller: 'courseEditModalController',
+                fullscreen: true,
+                clickOutsideToClose: true,
 				resolve : {
 					course: function () {
 						return $scope.skeleton;
@@ -68,16 +73,22 @@ function TimetableController($scope, courseService, schoolService, $modal, notif
 				}
 		});
 
-		$modalInstance.result.then(function (course) {
+		$modalInstance.then(function (course) {
 			courseService.createCourse(course).
 			success(function (response) {
 				console.log(response);
 				$scope.courses.push(response);
 				$scope.refresh();
-				notify("Course created");
+				$mdToast.show(
+                    $mdToast.simple()
+                        .textContent("Course Created")
+                );
 			}).
 			error(function(error, status){
-				notify("Error creating course:" + error);
+				$mdToast.show(
+                    $mdToast.simple()
+                        .textContent(error)
+                );
 			});
 		});
 	};
@@ -97,4 +108,4 @@ function TimetableController($scope, courseService, schoolService, $modal, notif
 
 angular.module('courseview.timetable', ['courseview.courseModal'])
     .controller('TimetableController', ['$scope', 'courseService', 
-										'schoolService', '$modal', 'notify', '$stateParams', TimetableController]);
+										'schoolService', '$mdDialog', '$mdToast', '$stateParams', TimetableController]);

@@ -32,6 +32,10 @@ var Programme = require('../models/programme');
 var Course = require('../models/course');
 
 
+//Authentication Endpoints
+var authenticate = require('../routes/authenticate')(router);
+
+
 //Course API Endpoints
 
 //get all courses in mongodb
@@ -89,7 +93,7 @@ router.put('/course/:id', function(req, res, next) {
 
 //get all universities
 router.get('/university', function(req, res, next){
-	University.find( {}, function (error, universities) {
+	University.find( {status:'active'}, function (error, universities) {
 		
 		if(error)
 			next(error);
@@ -127,6 +131,17 @@ router.get('/university/:id', function(req, res, next){
 
 //College API Endpoint
 
+//get all colleges in mongodb
+router.get('/college', function(req, res, next){
+    College.find({}, function (error, colleges) {
+        if(error)
+            next(error);
+        
+        res.json(colleges);
+        
+    })
+});
+
 //get colleges with id
 router.get('/college/:id', function(req, res, next){
 	College.findById(req.param.id, function(error, college){
@@ -153,6 +168,17 @@ router.get('/college/:id/departments', function(req, res, next){
 
 
 //Department API Endpoint
+
+//get all departments in mongodb
+router.get('/department', function(req, res, next){
+    Department.find({}, function (error, departments) {
+        if(error)
+            next(error);
+        
+        res.json(departments);
+        
+    });
+});
 
 //get department with id
 router.get('/department/:id', function(req, res, next){
@@ -185,6 +211,17 @@ router.get('/department/:id/programmes', function(req, res, next){
 
 //Programme API Endpoint
 
+//get all programmes in mongodb
+router.get('/programme', function(req, res, next){
+    Programme.find({}, function (error, programmes) {
+        if(error)
+            next(error);
+        
+        res.json(programmes);
+        
+    })
+});
+
 //get programme with id
 router.get('/programme/:id', function(req, res, next){
 	
@@ -214,11 +251,6 @@ router.get('/programme/:id/courses/:level', function(req, res, next){
 
 module.exports = router;
 
-//test route for elastix call center
-router.get('/customer/', function(req, res, next){
-    var phone = req.params('number');
-    res.send("Wale M - " + phone);
-});
 
 
     

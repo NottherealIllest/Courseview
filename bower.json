@@ -7,17 +7,18 @@
   "private": true,
   "dependencies": {
     "bootstrap": "latest",
-    "angular": "^1.4.1",
-    "angular-animate": "latest",
+    "angular": "^1.5.1",
+    "angular-animate": "1.5.x",
     "angular-ui-router": "~0.2.x",
-    "angular-aria": "1.4.x",
+    "angular-aria": "1.5.x",
     "momentjs": "~2.10.3",
     "angular-bootstrap": "~0.13.1",
+    "angular-material": "^1.0.0",
     "animate.css": "~3.4.0",
     "angular-notify": "~2.5.0",
     "angularfire": "^1.1.4"
   },
   "resolutions": {
-    "angular": "^1.4.1"
+    "angular": "^1.5.1"
   }
 }

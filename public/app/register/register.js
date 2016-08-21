@@ -1,6 +1,6 @@
 "use strict"
 
-angular.module("courseview.loginModal", []).
+angular.module("courseview.registerModal", []).
     controller("RegisterModalController", ['$scope', '$mdDialog', '$firebaseAuth', function($scope, $mdDialog, $firebaseAuth){
         
 //        var ref = new Firebase("https://flickering-torch-7869.firebaseio.com");

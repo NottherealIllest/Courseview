@@ -1,4 +1,28 @@
 <div class="container content" ng-controller="SchoolController">
+    <md-content layout="row" layout-xs="column" layout-wrap>
+        <div ng-repeat="school in schools" flex="33" flex-xs="100">
+            <md-card >
+                <md-card-header>
+                    <md-card-header-text>
+                        <h3 class="md-title">{{school.name}}</h3>
+                    </md-card-header-text>
+                </md-card-header>
+                <md-card-content>
+                    <p class="font-bold text-success">{{scholl.location}}</p>
+                    <div class="m">
+                        <i class="pe-7s-science fa-5x"></i>
+                    </div>
+                    <p class="small">
+                        {{school.description}}
+                    </p>
+                </md-card-content>
+                <md-card-actions>
+                    <md-button ui-sref="school.college({schoolId: school._id})" class="md-raised md-accent">View Colleges</md-button>
+                </md-card-actions>
+            </md-card>
+        </div>
+    </md-content>
+<!--
     <div class="row ">
         <div class="col-md-3" ng-repeat="school in schools">
                 <div class="hpanel">
@@ -18,4 +42,5 @@
                 </div>
         </div>
     </div>
+-->
 </div>

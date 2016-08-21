@@ -1,4 +1,34 @@
 <div class="container content" ng-controller="ProgrammeController">
+    <md-content layout="row" layout-xs="column" layout-wrap>
+       <div class="flex-100" style="text-align:center">
+            <h2>{{noContent}}</h2>
+        </div>
+        <div ng-repeat="programme in programmes" flex="33" flex-xs="100">
+            <md-card>
+                <md-card-header>
+                    <md-card-header-text>
+                        <h3 class="md-title">{{programme.name}}</h3>
+                    </md-card-header-text>
+                </md-card-header>
+                <md-card-content>
+                    <p class="font-bold text-success">{{programme.location}}</p>
+                    <md-input-container>
+                        <md-select name="choose_level" ng-model="chosen_level" placeholder="Level">
+                            <md-option ng-repeat="day in programme.levels" ng-value="{{day}}">
+                                {{day}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </md-card-content>
+                <md-card-actions>
+                    <md-button class="md-raised md-accent" ng-click="show_timetable(programme._id, chosen_level)">View Timetable</md-button>
+                </md-card-actions>
+            </md-card>
+        </div>
+    </md-content>
+    
+    
+<!--
     <div class="row ">
         <div class="col-md-3" ng-repeat="programme in programmes">
                 <div class="hpanel">
@@ -17,4 +47,5 @@
                 </div>
         </div>
     </div>
+-->
 </div>
