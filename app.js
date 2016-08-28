@@ -19,9 +19,10 @@ var forceSsl = function (req, res, next) {
  };
 
  app.use(function () {
-
+     console.log("Currently in: ", env);
     if (env === 'production') {
         app.use(forceSsl);
+        console.log("Yea!!! Feeling secure");
     }
 
     // other configurations etc for express go here...
