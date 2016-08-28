@@ -12,8 +12,11 @@ app.use(body.urlencoded({extended:true}))
 app.use(methodOverride('X-HTTP-Method-Override')) 
 
 var forceSsl = function (req, res, next) {
+    console.log("Request is: ", req.headers['x-forwarded-proto']);
     if (req.headers['x-forwarded-proto'] !== 'https') {
-        return res.redirect(['https://', req.get('Host'), req.url].join(''));
+        var url = ['https://', req.get('Host'), req.url].join('');
+        console.log(url);
+        return res.redirect(url);
     }
     return next();
  };
