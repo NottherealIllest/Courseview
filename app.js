@@ -21,15 +21,12 @@ var forceSsl = function (req, res, next) {
     return next();
  };
 
- app.use(function () {
-     console.log("Currently in: ", env);
-    if (env === 'production') {
-        app.use(forceSsl);
-        console.log("Yea!!! Feeling secure");
-    }
-
-    // other configurations etc for express go here...
-})
+ 
+console.log("Currently in: ", env);
+if (env === 'production') {
+    app.use(forceSsl);
+    console.log("Yea!!! Feeling secure");
+}
 
 // routes ==================================================
 require('./app/routes')(app) // configure our routes
