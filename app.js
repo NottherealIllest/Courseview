@@ -24,7 +24,7 @@ var forceSsl = function (req, res, next) {
     }
 
     // other configurations etc for express go here...
-}
+})
 
 // routes ==================================================
 require('./app/routes')(app) // configure our routes
