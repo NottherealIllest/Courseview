@@ -10,6 +10,22 @@ app.use(body.urlencoded({extended:true}))
 // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
 app.use(methodOverride('X-HTTP-Method-Override')) 
 
+var forceSsl = function (req, res, next) {
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+        return res.redirect(['https://', req.get('Host'), req.url].join(''));
+    }
+    return next();
+ };
+
+ app.configure(function () {
+
+    if (env === 'production') {
+        app.use(forceSsl);
+    }
+
+    // other configurations etc for express go here...
+}
+
 // routes ==================================================
 require('./app/routes')(app) // configure our routes
 
