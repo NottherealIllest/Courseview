@@ -1,15 +1,13 @@
-# Course View 
+# Course View
 
 This project is an application for university students to able to get real time update on changes made to their school's timetable.
 
 ## Getting Started
 
-To get you started you can simply clone the angular-seed repository and install the dependencies:
+To get you started you can simply clone the repository and install the dependencies:
 
 ### Prerequisites
 
-You need git to clone the angular-seed repository. You can get git from
-[http://git-scm.com/](http://git-scm.com/).
 
 ### Install Dependencies
 
