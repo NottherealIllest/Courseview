@@ -1,26 +1,15 @@
 'use strict'
 
-var db       = require('../../config/db');
 var router = require('express').Router();
 var response = require('../api/response');
 var mongoose = require('mongoose');
 
-mongoose.connect(db.url, function(err)  {
+
+var db = process.env.MLAB_URL;
+mongoose.connect(db, function(err)  {
     if(err){
-
-		console.log('Connection Error:' + err);
-		console.log('Trying with local mongo instance');
-
-		mongoose.connect(db.localMongo, function(error){
-
-			if(error)
-				console.log("Local Instance Error:", error);
-
-			else
-				console.log("Connected to local Mongo instance");
-		});
-	}
-
+      console.log('Connection Error:' + err);
+	  }
     else
         console.log("Connected");
 });
