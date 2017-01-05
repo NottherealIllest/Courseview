@@ -1,6 +1,6 @@
 # Course View
 
-This project is an application for university students to able to get real time update on changes made to their school's timetable.
+This project is a platform to enable higher instituition student collaborate and get real time update to changes in their timetable
 
 ## Getting Started
 
