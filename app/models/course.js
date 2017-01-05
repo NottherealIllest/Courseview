@@ -1,6 +1,5 @@
 // grab the mongoose module
 var mongoose = require('mongoose');
-var db       = require('../../config/db');
 var university = require('./university');
 var department = require('./department');
 //var
