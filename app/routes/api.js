@@ -189,7 +189,7 @@ router.get('/department/:id', function(req, res, next){
 router.get('/department/:id/programmes', function(req, res, next){
 
 	Programme.find({ department: req.params.id})
-  .populate("college")
+  .populate("department")
   .exec(function(error, programmes){
   		console.log(error, programmes, req.params.id, req.query);
   		if(error)
