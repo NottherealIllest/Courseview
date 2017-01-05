@@ -7,20 +7,20 @@ var mongoose = require('mongoose');
 
 mongoose.connect(db.url, function(err)  {
     if(err){
-		
+
 		console.log('Connection Error:' + err);
 		console.log('Trying with local mongo instance');
-		
+
 		mongoose.connect(db.localMongo, function(error){
-			
+
 			if(error)
 				console.log("Local Instance Error:", error);
-			
+
 			else
 				console.log("Connected to local Mongo instance");
 		});
 	}
-        
+
     else
         console.log("Connected");
 });
@@ -47,7 +47,7 @@ router.get('/course', function(req, res, next) {
         if (err)
             res.send(err);
 
-        res.json(courses); // return all courses in JSON format 
+        res.json(courses); // return all courses in JSON format
     });
 });
 
@@ -66,7 +66,7 @@ router.get('/course/:id', function(req, res, next) {
 
 // create a course
 router.post('/course', function(req, res, next){
-    
+
     Course.create(req.body, function(err, result) {
         if(err)
             res.send(err);
@@ -76,7 +76,7 @@ router.post('/course', function(req, res, next){
 
 // delete a course
 router.delete('/course/:id', function(req, res, next) {
-             
+
 });
 
 // update a course
@@ -93,36 +93,37 @@ router.put('/course/:id', function(req, res, next) {
 
 //get all universities
 router.get('/university', function(req, res, next){
-	University.find( {status:'active'}, function (error, universities) {
-		
+	University.find( /*{status:'active', */ function (error, universities) {
+
 		if(error)
 			next(error);
-		
+
 		res.json(universities);
-		
+
 	});
 });
 
 //get all colleges in university
 router.get('/university/:id/colleges', function(req, res, next){
-	
-	College.find({ university: req.params.id}, function(error, colleges){
-		
-		if(error)
-			return next(error);
-		
-		res.json(colleges);
-	});
-	
+
+	College.find({ university: req.params.id})
+    .populate('university')
+    .exec(function(error, colleges){
+  		if(error)
+  			return next(error);
+
+  		res.json(colleges);
+	   });
+
 });
 
 //get universities with id
 router.get('/university/:id', function(req, res, next){
 	University.findById(req.params.id, function(error, colleges){
-		
+
 		if(error)
 			return next(error);
-		
+
 		res.json(colleges);
 	});
 });
@@ -136,34 +137,36 @@ router.get('/college', function(req, res, next){
     College.find({}, function (error, colleges) {
         if(error)
             next(error);
-        
+
         res.json(colleges);
-        
+
     })
 });
 
-//get colleges with id
+//get college with id
 router.get('/college/:id', function(req, res, next){
 	College.findById(req.param.id, function(error, college){
-		
+
 		if(error)
 			return next(error);
-		
+
 		res.json(college);
-		
+
 	});
 });
 
 //get all department within college
 router.get('/college/:id/departments', function(req, res, next){
-	
-	Department.find({ college: req.params.id}, function(error, departments){
-		if(error)
-			return next(error);
-		
-		res.json(departments);
-	});
-	
+
+	Department.find({ college: req.params.id})
+    .populate('college')
+    .exec(function(error, departments){
+  		if(error)
+  			return next(error);
+
+  		res.json(departments);
+	   });
+
 });
 
 
@@ -174,37 +177,39 @@ router.get('/department', function(req, res, next){
     Department.find({}, function (error, departments) {
         if(error)
             next(error);
-        
+
         res.json(departments);
-        
+
     });
 });
 
 //get department with id
 router.get('/department/:id', function(req, res, next){
-	
+
 	Department.findById(req.params.id, function(error, department){
 		if(error)
 			return next(error);
-		
+
 		res.json(department);
-		
+
 	});
-	
+
 });
 
-//get programmes with department id 
+//get programmes with department id
 router.get('/department/:id/programmes', function(req, res, next){
-	
-	Programme.find({ department: req.params.id}, function(error, programmes){
-		console.log(error, programmes, req.params.id, req.query);
-		if(error)
-			return next(error);
-		
-		res.json(programmes);
-		
-	});
-	
+
+	Programme.find({ department: req.params.id})
+  .populate("college")
+  .exec(function(error, programmes){
+  		console.log(error, programmes, req.params.id, req.query);
+  		if(error)
+  			return next(error);
+
+  		res.json(programmes);
+
+  	});
+
 });
 
 
@@ -216,41 +221,37 @@ router.get('/programme', function(req, res, next){
     Programme.find({}, function (error, programmes) {
         if(error)
             next(error);
-        
+
         res.json(programmes);
-        
+
     })
 });
 
 //get programme with id
 router.get('/programme/:id', function(req, res, next){
-	
+
 	Programme.findById(req.params.id, function(error, programme){
 		if(error)
 			return next(error);
-		
+
 		res.json(programme);
-		
+
 	});
-	
+
 });
 
-//get courses with programme id 
+//get courses with programme id
 router.get('/programme/:id/courses/:level', function(req, res, next){
 	console.log(req.params);
 	Course.find({ programme: req.params.id, level: req.params.level}, function(error, courses){
 		if(error)
 			return next(error);
-		
+
 		res.json(courses);
-		
+
 	});
-	
+
 });
 
 
 module.exports = router;
-
-
-
-    

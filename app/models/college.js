@@ -2,10 +2,10 @@
 var mongoose = require('mongoose');
 
 var collegeSchema = new mongoose.Schema({
-	university	 : String,
+		university	 : { type: String, ref: 'University' },
     name         : String,
     location     : String,
-	description  : String
+		description  : String
 });
 
 // define our course model

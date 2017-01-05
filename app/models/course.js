@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var db       = require('../../config/db');
 var university = require('./university');
 var department = require('./department');
-//var 
+//var
 var courseSchema = new mongoose.Schema({
     coursecode        : String,
     coursename        : String,
@@ -11,7 +11,7 @@ var courseSchema = new mongoose.Schema({
     times       : [],
     notes       : String,
     color       : String,
-    programme   : String,
+    programme   : { type: String, ref: 'Programme' },
 });
 
 // define our course model

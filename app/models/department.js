@@ -4,8 +4,8 @@ var mongoose = require('mongoose');
 var departmentSchema = new mongoose.Schema({
     name         : String,
     location     : String,
-	description  : String,
-	college		 : String
+	  description  : String,
+	  college		   : { type: String, ref: 'College' }
 });
 
 // define our course model
